@@ -1,0 +1,23 @@
+{
+  "name": "moonbeam-truffle-plugin",
+  "version": "1.0.0",
+  "description": "Truffle plugin for Moonbeam Box",
+  "main": "moonbeam.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PureStake/moonbeam-truffle-plugin.git"
+  },
+  "keywords": [
+    "truffle",
+    "moonbeam"
+  ],
+  "author": "albertov19",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PureStake/moonbeam-truffle-plugin/issues"
+  },
+  "homepage": "https://github.com/PureStake/moonbeam-truffle-plugin#readme"
+}
