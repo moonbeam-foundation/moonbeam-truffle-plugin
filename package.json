@@ -1,6 +1,6 @@
 {
   "name": "moonbeam-truffle-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Truffle plugin for Moonbeam Box",
   "main": "moonbeam.js",
   "scripts": {
