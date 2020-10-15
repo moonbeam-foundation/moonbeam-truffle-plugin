@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 
 const start = async () => {
    // Start Node
-   exec('docker run --rm -d -p 9933:9933 -p 9944:9944 purestake/moonbase  node-moonbeam --rpc-external --rpc-cors all --dev', (error, stdout, stderr) => {
+   exec('docker run --rm -d -p 9933:9933 -p 9944:9944 purestake/moonbase  moonbase-standalone --rpc-external --rpc-cors all --dev', (error, stdout, stderr) => {
       if (error) {
          if (error.message.includes('permission denied')) {
             console.log(`Connect: permission denied. Permission issues, try again with sudo`);
