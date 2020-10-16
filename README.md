@@ -1,5 +1,7 @@
 # Moonbeam Truffle Plugin
 
+This is meant to be used with the Moonbeam Truffle box: https://github.com/PureStake/moonbeam-truffle-box.git
+
 The plugin is used to get you started with a local standalone Moonbeam node quickly. You can check all available commands with the help flag:
 
 ```
