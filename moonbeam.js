@@ -4,11 +4,13 @@ const stop = require('./commands/stop_node');
 const pause = require('./commands/pause_node');
 const unpause = require('./commands/unpause_node');
 const status = require('./commands/status_node');
+const remove = require('./commands/remove_moonbeam');
+
 
 module.exports = (config) => {
    if (config.help) {
       console.log(`Usage: truffle run moonbeam [command]`);
-      console.log(`Commands: install, start, stop, pause, unpause, status`);
+      console.log(`Commands: install, start, stop, pause, unpause, status, remove`);
       return;
    }
 
@@ -37,6 +39,9 @@ module.exports = (config) => {
          break;
       case 'status':
          status();
+         break;
+      case 'remove':
+         remove();
          break;
       default:
          console.log(
