@@ -5,7 +5,7 @@ const pause = require('./commands/pause_node');
 const unpause = require('./commands/unpause_node');
 const status = require('./commands/status_node');
 const remove = require('./commands/remove_moonbeam');
-
+const version = 'tutorial-v3';
 
 module.exports = (config) => {
    if (config.help) {
@@ -23,25 +23,25 @@ module.exports = (config) => {
 
    switch (config._[1]) {
       case 'install':
-         install();
+         install(version);
          break;
       case 'start':
-         start();
+         start(version);
          break;
       case 'stop':
-         stop();
+         stop(version);
          break;
       case 'pause':
-         pause();
+         pause(version);
          break;
       case 'unpause':
-         unpause();
+         unpause(version);
          break;
       case 'status':
-         status();
+         status(version);
          break;
       case 'remove':
-         remove();
+         remove(version);
          break;
       default:
          console.log(

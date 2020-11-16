@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 
 // Install function
-const install = async () => {
+const install = async (version) => {
    // Check if Docker is installed, if not, install it
    const output = spawn('docker', ['-v']);
 
@@ -12,7 +12,7 @@ const install = async () => {
 
    // On Close (Docker is installed)
    output.on('close', () => {
-      get_docker_image();
+      get_docker_image(version);
    });
 
    // Docker not installed, installing
@@ -21,11 +21,11 @@ const install = async () => {
    })
 }
 
-const get_docker_image = async () => {
+const get_docker_image = async (version) => {
    console.log('Downloading Moonbeam Standalone Docker Image...');
 
    // Pull Moonbeam Container
-   const output = spawn('docker', ['pull', 'purestake/moonbase:tutorial-v2.2']);
+   const output = spawn('docker', ['pull', `purestake/moonbase:${version}`]);
 
    // Stream CL output
    output.stdout.on('data', (data) => {

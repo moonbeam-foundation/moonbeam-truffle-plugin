@@ -1,8 +1,8 @@
 const { exec } = require('child_process');
 
-const unpause = async () => {
+const unpause = async (version) => {
    // Unpause Chain
-   exec('docker unpause $(docker ps -q --filter ancestor="purestake/moonbase:tutorial-v2.2")', (error, stdout, stderr) => {
+   exec(`docker unpause $(docker ps -q --filter ancestor="purestake/moonbase:${version}")`, (error, stdout, stderr) => {
       if (error) {
          if (error.message.includes('permission denied')) {
             console.log(`Connect: permission denied. Permission issues, try again with sudo`);

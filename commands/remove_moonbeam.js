@@ -1,8 +1,8 @@
 const { exec } = require('child_process');
 
-const start = async () => {
+const start = async (version) => {
    // Remove Docker Image
-   exec('docker rmi purestake/moonbase:tutorial-v2.2', (error, stdout, stderr) => {
+   exec(`docker rmi purestake/moonbase:${version}`, (error, stdout, stderr) => {
       if (error) {
          if (error.message.includes('permission denied')) {
             console.log(`Connect: permission denied. Permission issues, try again with sudo`);
