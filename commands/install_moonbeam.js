@@ -25,7 +25,7 @@ const get_docker_image = async (version) => {
    console.log('Downloading Moonbeam Standalone Docker Image...');
 
    // Pull Moonbeam Container
-   const output = spawn('docker', ['pull', `purestake/moonbase:${version}`]);
+   const output = spawn('docker', ['pull', `purestake/moonbeam:${version}`]);
 
    // Stream CL output
    output.stdout.on('data', (data) => {

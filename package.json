@@ -1,33 +1,34 @@
 {
-  "_from": "moonbeam-truffle-plugin@>=1.1.5",
+  "_from": "moonbeam-truffle-plugin@>=1.3.0",
+  "_id": "moonbeam-truffle-plugin@1.3.0",
   "_inBundle": false,
-  "_integrity": "sha512-AHYphFZhfgtfYzPO6jZAvqUMv6aZRjFdt0BoDByVPvmVPUpVrptPIG0Zw5TyMzB4Sm52EZHGyXjFkKFknu+RGA==",
+  "_integrity": "sha512-AV1XqeWT8L1eNruruzS2egQULzAOib3eF27v0ufcDEN49QLZGasyC58OKik4VyKNp1vPeT93RRjMxY3XC6cTAQ==",
   "_location": "/moonbeam-truffle-plugin",
   "_phantomChildren": {},
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "moonbeam-truffle-plugin@>=1.1.5",
+    "raw": "moonbeam-truffle-plugin@>=1.3.0",
     "name": "moonbeam-truffle-plugin",
     "escapedName": "moonbeam-truffle-plugin",
-    "rawSpec": ">=1.1.5",
+    "rawSpec": ">=1.3.0",
     "saveSpec": null,
-    "fetchSpec": ">=1.1.5"
+    "fetchSpec": ">=1.3.0"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/moonbeam-truffle-plugin/-/moonbeam-truffle-plugin-1.1.5.tgz",
-  "_shasum": "3c49de6c6735e708dce25917e977e793b653ff58",
-  "_spec": "moonbeam-truffle-plugin@>=1.1.5",
-  "_where": "/home/purestake/moonbeam-truffle-box",
+  "_resolved": "https://registry.npmjs.org/moonbeam-truffle-plugin/-/moonbeam-truffle-plugin-1.3.0.tgz",
+  "_shasum": "ffd99ddd4154b4b78c19e9ee527b809d92ca2024",
+  "_spec": "moonbeam-truffle-plugin@>=1.3.0",
+  "_where": "/home/alberto/data/moonbeam-truffle-box",
   "author": {
     "name": "albertov19"
   },
   "bugs": {
     "url": "https://github.com/PureStake/moonbeam-truffle-plugin/issues"
   },
-  "bundleDependencies": [],
+  "bundleDependencies": false,
   "deprecated": false,
   "description": "Truffle plugin for Moonbeam Box",
   "homepage": "https://github.com/PureStake/moonbeam-truffle-plugin#readme",
@@ -45,5 +46,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.3.0"
+  "version": "1.3.1"
 }

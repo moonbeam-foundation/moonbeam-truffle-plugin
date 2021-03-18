@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 
 const status = async (version) => {
     // Status Node
-    exec(`docker ps -q --filter ancestor="purestake/moonbase:${version}"`, (error, stdout, stderr) => {
+    exec(`docker ps -q --filter ancestor="purestake/moonbeam:${version}"`, (error, stdout, stderr) => {
         if (error) {
             if (error.message.includes('permission denied')) {
                 console.log(`Connect: permission denied. Permission issues, try again with sudo`);
