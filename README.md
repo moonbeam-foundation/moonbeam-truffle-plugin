@@ -24,6 +24,14 @@ Start the standalone Moonbeam node.
 node_modules/.bin/truffle run moonbeam start
 ```
 
+The start command comes with custom options:
+- `--httpPort`: For setting a custom HTTP port. Accepts a port number to the right of the command.
+- `--wsPort`: For setting a custom WS port. Accepts a port number to the right of the command.
+
+```
+node_modules/.bin/truffle run moonbeam start --httpPort 8545
+```
+
 ## Stop
 Stop the standalone Moonbeam node. This will remove the container, thus purging the chain.
 
