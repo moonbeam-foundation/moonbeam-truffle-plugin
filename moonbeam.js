@@ -10,7 +10,9 @@ const version = 'tutorial-v6';
 module.exports = (config) => {
    if (config.help) {
       console.log(`Usage: truffle run moonbeam [command]`);
-      console.log(`Commands: install, start, stop, pause, unpause, status, remove`);
+      console.log(`Commands: install, start <start-options>, stop, pause, unpause, status, remove`);
+      console.log(`Start options: --httpPort <custom-port>, --wsPort <custom-port>`);
+      console.log(`For example: truffle run moonbeam start --httpPort 8545`)
       return;
    }
 
@@ -26,7 +28,7 @@ module.exports = (config) => {
          install(version);
          break;
       case 'start':
-         start(version);
+         start(version, config.httpPort, config.wsPort);
          break;
       case 'stop':
          stop(version);
