@@ -2,7 +2,7 @@
 
 This is meant to be used with the Moonbeam Truffle box: https://github.com/PureStake/moonbeam-truffle-box.git
 
-The plugin is used to get you started with a local standalone Moonbeam node quickly. You can check all available commands with the help flag:
+The plugin is used to get you started with a local development Moonbeam node quickly. You can check all available commands with the help flag:
 
 ```
 ./node_modules/.bin/truffle run moonbeam --help
@@ -11,49 +11,57 @@ The plugin is used to get you started with a local standalone Moonbeam node quic
 The following commands are available:
 
 ## Install
-In this context, installing means downloading the Docker image of the Moonbeam standalone node (requires Docker to be installed).
+In this context, installing means downloading the Docker image of the Moonbeam development node (requires Docker to be installed).
 
 ```
 node_modules/.bin/truffle run moonbeam install
 ```
 
 ## Start
-Start the standalone Moonbeam node.
+Start the development Moonbeam node.
 
 ```
 node_modules/.bin/truffle run moonbeam start
 ```
 
+The start command comes with custom options:
+- `--rpc-port`: For setting a custom HTTP port. Accepts a port number to the right of the command.
+- `--ws-port`: For setting a custom WS port. Accepts a port number to the right of the command.
+
+```
+node_modules/.bin/truffle run moonbeam start --rpc-port 8545
+```
+
 ## Stop
-Stop the standalone Moonbeam node. This will remove the container, thus purging the chain.
+Stop the development Moonbeam node. This will remove the container, thus purging the chain.
 
 ```
 node_modules/.bin/truffle run moonbeam stop
 ```
 
 ## Pause
-Pause the standalone Moonbeam node.
+Pause the development Moonbeam node.
 
 ```
 node_modules/.bin/truffle run moonbeam pause
 ```
 
 ## Unpause
-Unpause the standalone Moonbeam node.
+Unpause the development Moonbeam node.
 
 ```
 node_modules/.bin/truffle run moonbeam unpause
 ```
 
 ## Status
-Shows the status of the standalone Moonbeam node.
+Shows the status of the development Moonbeam node.
 
 ```
 node_modules/.bin/truffle run moonbeam status
 ```
 
 ## Remove
-Removes the Docker image of the Moonbeam standalone node.
+Removes the Docker image of the Moonbeam development node.
 
 ```
 node_modules/.bin/truffle run moonbeam remove
