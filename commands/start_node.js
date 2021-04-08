@@ -40,10 +40,10 @@ const start = async (version, httpPort, wsPort) => {
       if (isMacOS) {
          // MacOS typically needs to publish the port, so if a user doesn't specify a port let's 
          // use the defaults 9933 for http and 9944 for ws.
-         stdout = await asyncExec(`docker run --rm -d --name moonbeam_standalone ${httpPort ? publishHttpPort : "-p 9933:9933"} ${wsPort ? publishWsPort : "-p 9944:9944"} purestake/moonbeam:${version} --dev --ws-external --rpc-external`);
+         stdout = await asyncExec(`docker run --rm -d --name moonbeam_development ${httpPort ? publishHttpPort : "-p 9933:9933"} ${wsPort ? publishWsPort : "-p 9944:9944"} purestake/moonbeam:${version} --dev --ws-external --rpc-external`);
       } else {
          // If user is not on MacOS, then we only need to publish the port if the user specifies one
-         stdout = await asyncExec(`docker run --rm -d --name moonbeam_standalone --network host ${httpPort || publishHttpPort } ${wsPort || publishWsPort } purestake/moonbeam:${version} --dev`);
+         stdout = await asyncExec(`docker run --rm -d --name moonbeam_development --network host ${httpPort || publishHttpPort } ${wsPort || publishWsPort } purestake/moonbeam:${version} --dev`);
       }
 
       console.log(`Node has started - Endpoints: HTTP http://127.0.0.1:${httpPort || '9933'}  WS ws://127.0.0.1:${wsPort || '9944'} - Container ID ${stdout.substr(0, 12)} \n`);
