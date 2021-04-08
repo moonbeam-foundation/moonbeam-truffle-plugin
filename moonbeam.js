@@ -11,8 +11,8 @@ module.exports = (config) => {
    if (config.help) {
       console.log(`Usage: truffle run moonbeam [command]`);
       console.log(`Commands: install, start <start-options>, stop, pause, unpause, status, remove`);
-      console.log(`Start options: --httpPort <custom-port>, --wsPort <custom-port>`);
-      console.log(`For example: truffle run moonbeam start --httpPort 8545`)
+      console.log(`Start options: --rpc-port <custom-port>, --ws-port <custom-port>`);
+      console.log(`For example: truffle run moonbeam start --rpc-port 8545`)
       return;
    }
 
