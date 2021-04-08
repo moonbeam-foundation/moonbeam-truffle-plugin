@@ -28,7 +28,7 @@ module.exports = (config) => {
          install(version);
          break;
       case 'start':
-         start(version, config.httpPort, config.wsPort);
+         start(version, config["rpc-port"], config["ws-port"]);
          break;
       case 'stop':
          stop(version);
