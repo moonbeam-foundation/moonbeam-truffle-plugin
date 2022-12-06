@@ -1,6 +1,15 @@
 const { exec } = require('child_process');
+const fs = require('fs');
 
-const pause = async (version) => {
+const pause = async () => {
+  // Get Version from File
+  let version;
+  try {
+    version = JSON.parse(fs.readFileSync('release-version.json')).version;
+  } catch (e) {
+    console.error(e);
+  }
+
   // Pause Chain
   exec(`docker pause $(docker ps -q --filter ancestor="purestake/moonbeam:${version}")`, (error, stdout, stderr) => {
     if (error) {
@@ -15,7 +24,7 @@ const pause = async (version) => {
       console.log(`Error: ${stderr}`);
       return;
     }
-    console.log(`Node has paused - Container ID ${stdout.substr(0, 12)} \n`);
+    console.log(`Node with version ${version} has paused - Container ID ${stdout.substr(0, 12)} \n`);
   });
 };
 

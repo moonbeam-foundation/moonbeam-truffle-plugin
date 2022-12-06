@@ -1,6 +1,15 @@
 const { exec } = require('child_process');
+const fs = require('fs');
 
-const unpause = async (version) => {
+const unpause = async () => {
+  // Get Version from File
+  let version;
+  try {
+    version = JSON.parse(fs.readFileSync('release-version.json')).version;
+  } catch (e) {
+    console.error(e);
+  }
+
   // Unpause Chain
   exec(`docker unpause $(docker ps -q --filter ancestor="purestake/moonbeam:${version}")`, (error, stdout, stderr) => {
     if (error) {

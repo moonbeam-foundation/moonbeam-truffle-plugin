@@ -1,6 +1,15 @@
 const { exec } = require('child_process');
+const fs = require('fs');
 
-const start = async (version) => {
+const remove = async () => {
+  // Get Version from File
+  let version;
+  try {
+    version = JSON.parse(fs.readFileSync('release-version.json')).version;
+  } catch (e) {
+    console.error(e);
+  }
+
   // Remove Docker Image
   exec(`docker rmi purestake/moonbeam:${version}`, (error, stdout, stderr) => {
     if (error) {
@@ -18,7 +27,16 @@ const start = async (version) => {
       return;
     }
     console.log(`${stdout} \n`);
+
+    // Delete Version file
+    fs.access('release-version.json', (error) => {
+      if (!error) {
+        fs.unlinkSync('release-version.json');
+      } else {
+        console.error('Error occured:', error);
+      }
+    });
   });
 };
 
-module.exports = start;
+module.exports = remove;

@@ -1,6 +1,15 @@
 const { exec } = require('child_process');
+const fs = require('fs');
 
-const status = async (version) => {
+const status = async () => {
+  // Get Version from File
+  let version;
+  try {
+    version = JSON.parse(fs.readFileSync('release-version.json')).version;
+  } catch (e) {
+    console.error(e);
+  }
+
   // Status Node
   exec(`docker ps -q --filter ancestor="purestake/moonbeam:${version}"`, (error, stdout, stderr) => {
     if (error) {
@@ -17,10 +26,10 @@ const status = async (version) => {
     }
 
     if (stdout === '') {
-      console.log(`Node is not running\n`);
+      console.log(`Node with version ${version} is not running\n`);
     } else {
       console.log(
-        `Node has started - Endpoints: HTTP http://127.0.0.1:9933  WS ws://127.0.0.1:9944 - Container ID ${stdout.substr(
+        `Node with version ${version} has started - Endpoints: HTTP http://127.0.0.1:9933  WS ws://127.0.0.1:9944 - Container ID ${stdout.substr(
           0,
           12
         )} \n`

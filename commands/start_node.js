@@ -1,4 +1,5 @@
 const { exec } = require('child_process');
+const fs = require('fs');
 
 const isMacOS = () => {
   // Detect the operating system using process:
@@ -30,9 +31,17 @@ const asyncExec = async (command) => {
   });
 };
 
-const start = async (version, httpPort, wsPort) => {
+const start = async (httpPort, wsPort) => {
   const publishHttpPort = `-p ${httpPort}:9933`;
   const publishWsPort = `-p ${wsPort}:9944`;
+
+  // Get Version from File
+  let version;
+  try {
+    version = JSON.parse(fs.readFileSync('release-version.json')).version;
+  } catch (e) {
+    console.error(e);
+  }
 
   // Start Node
   try {
@@ -55,9 +64,9 @@ const start = async (version, httpPort, wsPort) => {
     }
 
     console.log(
-      `Node has started - Endpoints: HTTP http://127.0.0.1:${httpPort || '9933'}  WS ws://127.0.0.1:${
-        wsPort || '9944'
-      } - Container ID ${stdout.substr(0, 12)} \n`
+      `Node with version ${version} has started - Endpoints: HTTP http://127.0.0.1:${
+        httpPort || '9933'
+      }  WS ws://127.0.0.1:${wsPort || '9944'} - Container ID ${stdout.substr(0, 12)} \n`
     );
   } catch (e) {
     console.log(e);

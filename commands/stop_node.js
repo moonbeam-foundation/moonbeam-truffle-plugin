@@ -1,6 +1,15 @@
 const { exec } = require('child_process');
+const fs = require('fs');
 
-const stop = async (version) => {
+const stop = async () => {
+  // Get Version from File
+  let version;
+  try {
+    version = JSON.parse(fs.readFileSync('release-version.json')).version;
+  } catch (e) {
+    console.error(e);
+  }
+
   // Stop node
   exec(`docker stop $(docker ps -q --filter ancestor="purestake/moonbeam:${version}")`, (error, stdout, stderr) => {
     if (error) {
@@ -15,7 +24,7 @@ const stop = async (version) => {
       console.log(`Error: ${stderr}`);
       return;
     }
-    console.log(`Node has stopped - Container ID ${stdout}`);
+    console.log(`Node with version ${version} has stopped - Container ID ${stdout}`);
   });
 };
 

@@ -1,4 +1,3 @@
-const axios = require('axios');
 const install = require('./commands/install_moonbeam');
 const start = require('./commands/start_node');
 const stop = require('./commands/stop_node');
@@ -7,17 +6,7 @@ const unpause = require('./commands/unpause_node');
 const status = require('./commands/status_node');
 const remove = require('./commands/remove_moonbeam');
 
-const getReleaseVersion = async () => {
-  try {
-    const { data } = await axios.get('https://api.github.com/repos/purestake/moonbeam/releases/latest');
-    return data.tag_name;
-  } catch (err) {
-    // Handle Error Here
-    console.error(err);
-  }
-};
-
-module.exports = async (config) => {
+module.exports = (config) => {
   if (config.help) {
     console.log(`Usage: truffle run moonbeam [command]`);
     console.log(`Commands: install, start <start-options>, stop, pause, unpause, status, remove`);
@@ -31,29 +20,27 @@ module.exports = async (config) => {
     return;
   }
 
-  const version = await getReleaseVersion();
-
   switch (config._[1]) {
     case 'install':
-      install(version);
+      install();
       break;
     case 'start':
-      start(version, config['rpc-port'], config['ws-port']);
+      start(config['rpc-port'], config['ws-port']);
       break;
     case 'stop':
-      stop(version);
+      stop();
       break;
     case 'pause':
-      pause(version);
+      pause();
       break;
     case 'unpause':
-      unpause(version);
+      unpause();
       break;
     case 'status':
-      status(version);
+      status();
       break;
     case 'remove':
-      remove(version);
+      remove();
       break;
     default:
       console.log('Command not found. Run truffle run moonbeam --help to see the full list.');
