@@ -17,7 +17,7 @@ const getReleaseVersion = async () => {
   }
 };
 
-module.exports = (config) => {
+module.exports = async (config) => {
   if (config.help) {
     console.log(`Usage: truffle run moonbeam [command]`);
     console.log(`Commands: install, start <start-options>, stop, pause, unpause, status, remove`);
@@ -31,7 +31,7 @@ module.exports = (config) => {
     return;
   }
 
-  const version = getReleaseVersion();
+  const version = await getReleaseVersion();
 
   switch (config._[1]) {
     case 'install':
