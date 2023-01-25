@@ -2,13 +2,25 @@ const { spawn } = require('child_process');
 const axios = require('axios');
 const fs = require('fs');
 
-let version;
-
 // Install function
 const install = async () => {
+  const version = "
   try {
-    const { data } = await axios.get('https://api.github.com/repos/purestake/moonbeam/releases/latest');
-    version = data.tag_name;
+    // Get a list of the releases
+    const { data } = await axios.get(
+      "https://api.github.com/repos/purestake/moonbeam/releases"
+    );
+    for (var i = 0; i < data.length; i++) {
+      // Get the list of assets per release
+      const assets = data[i].assets;
+      // Filter the assets for the moonbeam asset (if it exists)
+      const moonbeamAsset = assets.filter((asset) => asset.name === "moonbeam");
+      // If the moonbeam asset exists, save the version and break out of the loop
+      if (moonbeamAsset.length > 0) {
+        version = data[i].tag_name;
+        break;
+      }
+    }
   } catch (err) {
     // Handle Error Here
     console.error(err);
