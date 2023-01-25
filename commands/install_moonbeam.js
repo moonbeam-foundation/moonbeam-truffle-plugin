@@ -2,9 +2,10 @@ const { spawn } = require('child_process');
 const axios = require('axios');
 const fs = require('fs');
 
+let version;
+
 // Install function
 const install = async () => {
-  const version = "
   try {
     // Get a list of the releases
     const { data } = await axios.get(
