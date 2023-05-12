@@ -17,7 +17,9 @@ const asyncExec = async (command) => {
     const callback = (error, stdout, stderr) => {
       if (error) {
         if (error.message.includes('permission denied')) {
-          reject(`Connect: permission denied. Permission issues, try again with sudo`);
+          reject(
+            `Connect: permission denied. Permission issues, try again with sudo`
+          );
         } else {
           reject(`Error: ${error.message}`);
         }
@@ -31,8 +33,7 @@ const asyncExec = async (command) => {
   });
 };
 
-const start = async (httpPort, wsPort) => {
-  const publishHttpPort = `-p ${httpPort}:9933`;
+const start = async (wsPort) => {
   const publishWsPort = `-p ${wsPort}:9944`;
 
   // Get Version from File
@@ -48,25 +49,25 @@ const start = async (httpPort, wsPort) => {
     let stdout;
     if (isMacOS) {
       // MacOS typically needs to publish the port, so if a user doesn't specify a port let's
-      // use the defaults 9933 for http and 9944 for ws.
+      // use the default 9944 for http and ws.
       stdout = await asyncExec(
-        `docker run --rm -d --name moonbeam_development ${httpPort ? publishHttpPort : '-p 9933:9933'} ${
+        `docker run --rm -d --name moonbeam_development ${
           wsPort ? publishWsPort : '-p 9944:9944'
-        } purestake/moonbeam:${version} --dev --ws-external --rpc-external`
+        } purestake/moonbeam:${version} --dev --ws-external`
       );
     } else {
       // If user is not on MacOS, then we only need to publish the port if the user specifies one
       stdout = await asyncExec(
-        `docker run --rm -d --name moonbeam_development --network host ${httpPort || publishHttpPort} ${
+        `docker run --rm -d --name moonbeam_development --network host ${
           wsPort || publishWsPort
         } purestake/moonbeam:${version} --dev`
       );
     }
 
     console.log(
-      `Node with version ${version} has started - Endpoints: HTTP http://127.0.0.1:${
-        httpPort || '9933'
-      }  WS ws://127.0.0.1:${wsPort || '9944'} - Container ID ${stdout.substr(0, 12)} \n`
+      `Node with version ${version} has started - HTTP & WS Endpoint: ws://127.0.0.1:${
+        wsPort || '9944'
+      } - Container ID ${stdout.substr(0, 12)} \n`
     );
   } catch (e) {
     console.log(e);

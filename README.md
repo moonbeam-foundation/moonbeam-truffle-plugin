@@ -25,11 +25,10 @@ node_modules/.bin/truffle run moonbeam start
 ```
 
 The start command comes with custom options:
-- `--rpc-port`: For setting a custom HTTP port. Accepts a port number to the right of the command.
-- `--ws-port`: For setting a custom WS port. Accepts a port number to the right of the command.
+- `--ws-port`: For setting a custom unified HTTP and WS port. Accepts a port number to the right of the command.
 
 ```
-node_modules/.bin/truffle run moonbeam start --rpc-port 8545
+node_modules/.bin/truffle run moonbeam start --ws-port 8545
 ```
 
 ## Stop
