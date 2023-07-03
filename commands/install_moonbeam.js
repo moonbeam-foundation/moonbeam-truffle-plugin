@@ -8,7 +8,7 @@ let version;
 const install = async () => {
   try {
     const { data } = await axios.get('https://api.github.com/repos/purestake/moonbeam/releases/latest');
-    version = 'v0.32.1';
+    version = data.tag_name;
   } catch (err) {
     // Handle Error Here
     console.error(err);
