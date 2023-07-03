@@ -7,7 +7,7 @@ const status = require('./commands/status_node');
 const remove = require('./commands/remove_moonbeam');
 
 module.exports = (config) => {
-  if (config.help) {
+  if (config._[1] == 'help') {
     console.log(`Usage: truffle run moonbeam [command]`);
     console.log(`Commands: install, start <start-options>, stop, pause, unpause, status, remove`);
     console.log(`Start options: --ws-port <custom-port>`);
@@ -16,7 +16,7 @@ module.exports = (config) => {
   }
 
   if (config._.length < 2) {
-    console.log('No command provided. Run truffle run moonbeam --help to see the full list.');
+    console.log('No command provided. Run truffle run moonbeam help to see the full list.');
     return;
   }
 
@@ -43,6 +43,6 @@ module.exports = (config) => {
       remove();
       break;
     default:
-      console.log('Command not found. Run truffle run moonbeam --help to see the full list.');
+      console.log('Command not found. Run truffle run moonbeam help to see the full list.');
   }
 };

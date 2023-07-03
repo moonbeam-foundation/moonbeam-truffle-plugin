@@ -2,15 +2,18 @@
 
 This is meant to be used with the Moonbeam Truffle box: https://github.com/PureStake/moonbeam-truffle-box.git
 
+You can run any of the commands below from within the Moonbeam Truffle Box repo.
+
 The plugin is used to get you started with a local development Moonbeam node quickly. You can check all available commands with the help flag:
 
 ```
-./node_modules/.bin/truffle run moonbeam --help
+./node_modules/.bin/truffle run moonbeam help
 ```
 
 The following commands are available:
 
 ## Install
+
 In this context, installing means downloading the Docker image of the Moonbeam development node (requires Docker to be installed).
 
 ```
@@ -18,6 +21,7 @@ node_modules/.bin/truffle run moonbeam install
 ```
 
 ## Start
+
 Start the development Moonbeam node.
 
 ```
@@ -32,6 +36,7 @@ node_modules/.bin/truffle run moonbeam start --ws-port 8545
 ```
 
 ## Stop
+
 Stop the development Moonbeam node. This will remove the container, thus purging the chain.
 
 ```
@@ -39,6 +44,7 @@ node_modules/.bin/truffle run moonbeam stop
 ```
 
 ## Pause
+
 Pause the development Moonbeam node.
 
 ```
@@ -46,6 +52,7 @@ node_modules/.bin/truffle run moonbeam pause
 ```
 
 ## Unpause
+
 Unpause the development Moonbeam node.
 
 ```
@@ -53,6 +60,7 @@ node_modules/.bin/truffle run moonbeam unpause
 ```
 
 ## Status
+
 Shows the status of the development Moonbeam node.
 
 ```
@@ -60,6 +68,7 @@ node_modules/.bin/truffle run moonbeam status
 ```
 
 ## Remove
+
 Removes the Docker image of the Moonbeam development node.
 
 ```
@@ -67,4 +76,5 @@ node_modules/.bin/truffle run moonbeam remove
 ```
 
 # Contact Us
+
 We welcome any feedback, so feel free to reach out through our official [Discord Channel](https://discord.gg/PfpUATX).
